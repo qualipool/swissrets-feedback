@@ -44,4 +44,59 @@ The request's properties can be partioned in three parts:
 | responsePhone | string(20) | yes* | May be empty if an e-mail-address is provided |
 | offerType | buy \| rent | no ||
 | requestID | UUID/GUID | yes | This ID can be used for tracking and recognizing duplicate requests |
-| requestDate | datetime | yes | Date and time the request was made |
+| requestDate | timestamp | yes | Date and time the request was made |
+
+#### Response
+When the request is successfully submitted the service responds with a status 201 (Created) and a JSON-Object with the following properties is returned:
+
+| Field | Type | Remarks |
+| --- | --- | --- |
+| confirmationId | UUID/GUID | Serves as a recipt that the request has been accepted |
+| requestId | string | The request-ID the response is for |
+| timeReceived | timestamp | |
+
+In the case of failure the service responds with a status 400. The reason for the failure is stated in the response body.
+
+### Protection
+The API is protected using an API-Key in the form of a UUID/GUID. The involved parties have to exchange the API before using the API.
+The API-Key is submitted in the request header field with name X-API-Key.
+
+### Example
+#### Request
+Assume the service is located at https://swissrets.ch/api/feedback. Then the service could be called as follows:
+
+```
+curl --location \ 
+--request POST 'https://swissrets.ch/api/feedback' \ 
+--header 'Accept: application/json' \ 
+--header 'X-API-Key: 153b4171-5d17-4aeb-8d4b-3d27e436bc7c' \ 
+--header 'Content-Type: application/json' \ 
+--data-raw '{ 
+  "requestId": "fe09f2d8198f4497b9b8cad397ee2dba",
+  "requestDate": "2020-06-22T11:40:07.9507505+02:00", 
+  "propertyId": "3394663", 
+  "language": "de", 
+  "gender": "m", 
+  "firstName": "John", 
+  "lastName": "Doe", 
+  "street": "Sunset Boulevard", 
+  "streetNumber": "17", 
+  "postalCode": "1234", 
+  "city": "Nowhere", 
+  "message": "This is a test message. Please do not respond.", 
+  "responseEMail": "john.doe@swissrets.ch", 
+  "responsePhone": "+41 41 123 45 67", 
+  "offerType": "rent" 
+}'
+```
+
+#### Response
+201 Created
+
+```
+{
+  "confirmationId": "1f2a9f2a6e8e4ed2b8b2bc93100efda7",
+  "requestId": "fe09f2d8198f4497b9b8cad397ee2dba",
+  "timeReceived": "2020-06-22T11:07:49.7600294+02:00" 
+} 
+```
