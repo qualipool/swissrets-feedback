@@ -32,6 +32,7 @@ The request's properties can be partioned in three parts:
 | --- | --- | --- | --- |
 | version | int | yes | Version of the format structure, currently 1 |
 | propertyId | string | yes | The properties' reference-ID |
+| agencyReference | string | yes | The agencies' reference, preferrably the seller's id in the SwissRETS format. The propertyId and agencyReference form a unique key for the property |
 | inquiryLanguage | \[a-z\]2 | no | 2-letter language code, e.g. en |
 | inquiryGender | string(1) | no | either f, m or empty |
 | inquiryFirstName | string(50) | yes ||
@@ -76,7 +77,8 @@ curl --location \
   "version": 1,
   "requestId": "fe09f2d8198f4497b9b8cad397ee2dba",
   "requestDate": "2020-06-22T11:40:07.9507505+02:00", 
-  "propertyId": "3394663", 
+  "propertyId": "3394663",
+  "agencyReference": "abc",
   "inquiryLanguage": "de", 
   "inquiryGender": "m", 
   "inquiryFirstName": "John", 
