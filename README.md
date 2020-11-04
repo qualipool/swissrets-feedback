@@ -30,6 +30,7 @@ The request's properties can be partioned in three parts:
 
 | Field | Type | Is required | Remarks|
 | --- | --- | --- | --- |
+| version | int | yes | Version of the format structure, currently 1 |
 | propertyId | string | yes | The properties' reference-ID |
 | inquiryLanguage | \[a-z\]2 | no | 2-letter language code, e.g. en |
 | inquiryGender | string(1) | no | either f, m or empty |
@@ -72,6 +73,7 @@ curl --location \
 --header 'X-API-Key: 153b4171-5d17-4aeb-8d4b-3d27e436bc7c' \ 
 --header 'Content-Type: application/json' \ 
 --data-raw '{ 
+  "version": 1,
   "requestId": "fe09f2d8198f4497b9b8cad397ee2dba",
   "requestDate": "2020-06-22T11:40:07.9507505+02:00", 
   "propertyId": "3394663", 
