@@ -31,17 +31,17 @@ The request's properties can be partioned in three parts:
 | Field | Type | Is required | Remarks|
 | --- | --- | --- | --- |
 | propertyId | string | yes | The properties' reference-ID |
-| language | \[a-z\]2 | no | 2-letter language code, e.g. en |
-| gender | string(1) | no | either f, m or empty |
-| firstName | string(50) | yes ||
-| lastName | string(50) | yes ||
-| street | string(50) | no ||
-| streetNumber | string(10) | no ||
-| postalCode | string(30) | no ||
-| city | string(50) | no ||
-| message | string(500) | yes | Plaint text message |
-| responseEMail | string(100) | yes* | May be empty if a phone number is provided |
-| responsePhone | string(20) | yes* | May be empty if an e-mail-address is provided |
+| inquiryLanguage | \[a-z\]2 | no | 2-letter language code, e.g. en |
+| inquiryGender | string(1) | no | either f, m or empty |
+| inquiryFirstName | string(50) | yes ||
+| inquiryLastName | string(50) | yes ||
+| inquiryStreet | string(50) | no ||
+| inquiryStreetNumber | string(10) | no ||
+| inquiryPostalCode | string(30) | no ||
+| inquiryCity | string(50) | no ||
+| inquiryMessage | string(500) | yes | Plaint text message |
+| inquiryEMail | string(100) | yes* | May be empty if a phone number is provided |
+| inquiryPhone | string(20) | yes* | May be empty if an e-mail-address is provided |
 | offerType | buy \| rent | no ||
 | requestID | UUID/GUID | yes | This ID can be used for tracking and recognizing duplicate requests |
 | requestDate | timestamp | yes | Date and time the request was made |
@@ -75,17 +75,17 @@ curl --location \
   "requestId": "fe09f2d8198f4497b9b8cad397ee2dba",
   "requestDate": "2020-06-22T11:40:07.9507505+02:00", 
   "propertyId": "3394663", 
-  "language": "de", 
-  "gender": "m", 
-  "firstName": "John", 
-  "lastName": "Doe", 
-  "street": "Sunset Boulevard", 
-  "streetNumber": "17", 
-  "postalCode": "1234", 
-  "city": "Nowhere", 
-  "message": "This is a test message. Please do not respond.", 
-  "responseEMail": "john.doe@swissrets.ch", 
-  "responsePhone": "+41 41 123 45 67", 
+  "inquiryLanguage": "de", 
+  "inquiryGender": "m", 
+  "inquiryFirstName": "John", 
+  "inquiryLastName": "Doe", 
+  "inquiryStreet": "Sunset Boulevard", 
+  "inquiryStreetNumber": "17", 
+  "inquiryPostalCode": "1234", 
+  "inquiryCity": "Nowhere", 
+  "inquiryMessage": "This is a test message. Please do not respond.", 
+  "inquiryEMail": "john.doe@swissrets.ch", 
+  "inquiryPhone": "+41 41 123 45 67", 
   "offerType": "rent" 
 }'
 ```
